@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <script>
+        alert("Logged in successfully!");
+    </script>
+    
+    <div style="text-align: center; padding: 20px; background-color: #f0f0f0;">
+        <h2 style="color: #333;">Welcome,{{request.user.username}}!</h2>
+        <p style="font-style: italic; color: #666;">You have successfully logged in.</p>
+
+        <!-- Your other HTML content for the housemaid home page goes here -->
+        <a href="{% url 'siteusers:housemaid_bookings' %}" style="display: inline-block; padding: 10px; background-color: #4285f4; color: #fff; text-decoration: none;">View Bookings</a>
+    </div>
+{% endblock %}

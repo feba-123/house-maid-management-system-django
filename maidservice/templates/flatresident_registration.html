@@ -1,0 +1,24 @@
+{% extends 'login.html' %}
+{% load static %}
+{% block container %}
+    <h2 class="text-center" style="font-family: 'Times New Roman', Times, serif;font-weight:bold;">Flat Resident Registration</h2>
+  <form method="post" action="" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <input class="form-control" type="text" name="uname" placeholder="Username" required>
+        <input class="form-control" type="text" name="fname" placeholder="Firstname" required>
+        <input class="form-control" type="text" name="lname" placeholder="Lastname" required>
+        <input class="form-control" type="text" name="contact" placeholder="Phone" required>
+        <input class="form-control" type="email" name="email" placeholder="Email" required>
+        <input class="form-control" type="password" name="pwd" placeholder="Password" required>
+        <input class="form-control" type="file" name="image" placeholder="image" required>
+        <input class="form-control" type="text" name="address" placeholder="address" required>
+        <input class="form-control" type="text" name="flat_name" placeholder="flat_name" required>
+         <input class="form-control" type="email" name="caretaker_email" placeholder="caretaker_email" required>
+
+        <button type="submit">Register</button>
+
+    </form>
+    <a href="{% url 'siteusers:Login_User' %}" class="ml-3 mb-3" style="text-decoration: none;font-weight:bold;font-size:small;margin:5px;color:black;text-align:right;">Go to Login?</a>
+{% endblock %}

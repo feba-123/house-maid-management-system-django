@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Booking Approval Required</title>
+</head>
+<body>
+    <h2>New Booking Approval Required</h2>
+    <p>
+        Flat Resident: {{ order.flat_resident.user.username }}
+        Flat name:{{ order.flat_resident.flat_name }}
+        Housemaid: {{ order.service.user.username }}
+        Booking Date: {{ order.book_date }}
+        Booking Days: {{ order.book_days }}
+        Booking Hours: {{ order.book_hours }}
+
+
+        Approval Link: <a href="{{approval_link}}">link to approve</a>
+    </p>
+</body>
+</html>

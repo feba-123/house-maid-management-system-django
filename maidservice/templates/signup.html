@@ -1,0 +1,21 @@
+{% extends 'login.html' %}
+{% load static %}
+{% block container %}
+
+<div style="width:100%;border-radius:0.9rem;height:400px; display:flex; flex-direction:column; justify-content:center; align-items:center; background-color:#f2f2f2; padding:20px;">
+
+    <div style="margin-bottom: 40px; text-align:center;">
+        <a href="{% url 'siteusers:housemaid_registration' %}" class="mb-2 btn btn-lg btn-info overlay-button" style="font-weight:bolder;font-size:larger; padding:20px;">House Maid</a>
+    </div>
+
+    <div style="margin-bottom: 40px; text-align:center;">
+        <a href="{% url 'siteusers:houseresident_registration' %}" class="mb-2 btn btn-lg btn-info overlay-button" style="font-weight:bolder;font-size:larger; padding:20px;">House Resident</a>
+    </div>
+
+    <div style="text-align:center;">
+        <a href="{% url 'siteusers:flatresident_registration' %}" class="mb-2 btn btn-lg btn-info overlay-button" style="font-weight:bolder;font-size:larger; padding:20px;">Flat Resident</a>
+    </div>
+
+</div>
+
+{% endblock container %}

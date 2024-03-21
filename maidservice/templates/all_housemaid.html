@@ -1,0 +1,89 @@
+
+{% extends 'admin_navigation.html' %}
+{% load static %}{% block body %}
+
+<div class="chit-chat-layer1">
+	<div class="col-md-12 chit-chat-layer1-left">
+               <div class="work-progres">
+                            <div class="chit-chat-heading">
+                                  All Service Man
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th>#</th>
+                                      <th>Full Name</th>
+                                      <th>Email</th>
+                                      <th>Contact</th>
+                                      <th>Service</th>
+                                      <th>Status</th>
+                                      <th>View Detail</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                              {% for i in housemaids %}
+                                <tr>
+                                  <td>{{forloop.counter}}</td>
+                                  <td>{{i.user.username}} {{i.user.firstname}}</td>
+                                  <td>{{i.user.email}}</td>
+                                  <td>{{i.contact}}</td>
+                                  <td>{{i.service_name}}</td>
+                                    {% if i.status.status == 'Approve' %}
+                                      <td><span class="label label-success">{{i.status.status}}</span></td>
+                                    {% else %}
+                                    <td><span class="label label-danger">{{i.status.status}}</span></td>
+                                    {% endif %}
+                                  <td><a href="{% url 'siteusers:housemaid_detail' i.id %}" ><button class="btn btn-info"><i class="fa fa-eye"></i></button></a></td>
+                                  <td><a href="{% url 'siteusers:delete_service_man' i.id %}" ><button class="btn btn-danger" onclick="return confirm('Are you sure ?')"><i class="fa fa-trash-o"></i></button></a></td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+             </div>
+      </div>
+</div>
+    {% endblock %}
+<!--<h2>Admin Home</h2>-->
+
+<!--{% if housemaids %}-->
+<!--  <table border="1">-->
+<!--    <thead>-->
+<!--      <tr>-->
+<!--        <th>Housemaid Name</th>-->
+<!--        <th>Contact</th>-->
+<!--        <th>Address</th>-->
+<!--        <th>Status</th>-->
+<!--        <th>Action</th>-->
+<!--        &lt;!&ndash; Add other fields as needed &ndash;&gt;-->
+<!--      </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--      {% for housemaid in housemaids %}-->
+<!--        <tr>-->
+<!--          <td>{{ housemaid.user.first_name }} {{ housemaid.user.last_name }}</td>-->
+<!--          <td>{{ housemaid.contact }}</td>-->
+<!--          <td>{{ housemaid.address }}</td>-->
+<!--          <td>{{ housemaid.status }}</td>-->
+<!--          <td>-->
+<!--            <form method="post" action="{% url 'siteusers:admin_update_status' housemaid.id %}">-->
+<!--              {% csrf_token %}-->
+<!--              <input type="hidden" name="housemaid_id" value="{{ housemaid.id }}">-->
+
+<!--              <select name="status">-->
+<!--                <option value="">select one</option>-->
+<!--                <option value="Approve">Approve</option>-->
+<!--                <option value="Rejected" >Reject</option>-->
+<!--              </select>-->
+<!--              <button type="submit">Update Status</button>-->
+<!--            </form>-->
+<!--          </td>-->
+<!--        </tr>-->
+<!--      {% endfor %}-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--{% else %}-->
+<!--  <p>No housemaids found.</p>-->
+<!--{% endif %}-->

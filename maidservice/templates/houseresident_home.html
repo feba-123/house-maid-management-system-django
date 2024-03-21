@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Categories</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<br>
+<br>
+    <div class="container">
+     <h1 class="text-center" style="font-family: 'Times New Roman', Times, serif;font-weight:bold;">All Services</h2>
+         <br>
+         <br>
+         <br>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+        <div class="row">
+            {% for category in services %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ category.image.url }}" class="card-img-top" alt="Category Image" height="300px">
+                        <div class="card-body" style="text-align:center">
+                             <a href="{% url 'siteusers:Explore_Service' category.id %}" class="btn btn-primary">{{ category.category }}</a>
+
+                    </h5>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS (optional, if you need it) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock %}
+

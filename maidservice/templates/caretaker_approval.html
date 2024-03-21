@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caretaker Approval</title>
+</head>
+<body>
+    <h1>Caretaker Approval</h1>
+    <p>Approve the request from {{ flat_resident.user.username }} for caretaker access:</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Approve</button>
+    </form>
+</body>
+</html>

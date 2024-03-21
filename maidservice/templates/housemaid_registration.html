@@ -1,0 +1,43 @@
+{% extends 'login.html' %}
+{% load static %}
+{% block container %}
+
+   <h2 class="text-center" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">Housemaid Registration</h2>
+
+  <form method="post" action="" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <input class="form-control" type="text" name="uname" placeholder="Username" required>
+        <input class="form-control" type="text" name="fname" placeholder="Firstname" required>
+       <input class="form-control" type="file" name="image" accept="image/*"  placeholder="Image" required>
+        <input class="form-control" type="text" name="lname" placeholder="Lastname" required>
+        <input class="form-control" type="text" name="contact" placeholder="Contact" required>
+        <input class="form-control" type="email" name="email" placeholder="Email" required>
+        <input class="form-control" type="password" name="pwd" placeholder="Password" required>
+        <input class="form-control" type="text" name="address" placeholder="Address" required>
+       <input class="form-control" type="date" name="dob" placeholder="Date of Birth" required>
+       <input class="form-control" type="text" name="id_type" placeholder="ID_Type" required>
+       <input class="form-control" type="file" name="id_card" accept="image/*"  placeholder="ID Card" required>
+        <select class="form-control" name="service_name" required>
+    <option value="" disabled selected>Select Service</option>
+    {% for category in service_categories %}
+        <option value="{{ category.category }}">{{ category.category }}</option>
+    {% endfor %}
+</select>
+
+      <input class="form-control" type="text" name="experience" placeholder="Experience" required>
+      <input class="form-control" type="text" name="rate_per_hour" placeholder="Rate/hr" required>
+
+
+
+
+
+
+        <button type="submit">Register</button>
+
+    </form>
+    <a href="{% url 'siteusers:Login_User' %}" class="ml-3 mb-3" style="text-decoration: none;font-weight:bold;font-size:small;margin:5px;color:black;text-align:right;">Go to Login?</a>
+{% endblock %}
+
+

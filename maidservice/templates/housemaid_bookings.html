@@ -1,0 +1,59 @@
+{% extends 'home.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="display-4 text-center mb-4" style="color: #4285f4;">Your Bookings</h1>
+
+        {% if bookings %}
+            <table class="table table-hover table-bordered mt-3">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Customer</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Service</th>
+                        <th>Booking Date</th>
+                        <th>Booking Days</th>
+                        <th>Booking Hours</th>
+                        <th>Payment Amount</th>
+                        <th>Work Completed</th>
+                        <th>Paid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                        <tr style="background-color: #add8e6; color: black;">
+                            <td>{{ booking.id }}</td>
+                            {% if booking.customer %}
+                            <td>{{ booking.customer.user.username }}</td>
+                            <td>{{ booking.customer.contact}}</td>
+                            <td>{{ booking.customer.user.email}}</td>
+                            <td>{{ booking.customer.address}}</td>
+                            {% endif %}
+                             {% if booking.flat_resident %}
+                            <td>{{ booking.flat_resident.user.username }}</td>
+                            <td>{{ booking.flat_resident.contact}}</td>
+                            <td>{{ booking.flat_resident.user.email}}</td>
+                            <td>{{ booking.flat_resident.address}}</td>
+                            {% endif %}
+                            <td>{{ booking.service.service_name }}</td>
+                            <td>{{ booking.book_date }}</td>
+                            <td>{{ booking.book_days }}</td>
+                            <td>{{ booking.book_hours }}</td>
+                            <td>{{ booking.payment_amount }}</td>
+                            <td>{{booking.work_completed}}</td>
+                            <td>{{ booking.paid }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="mt-3">No bookings available.</p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+
